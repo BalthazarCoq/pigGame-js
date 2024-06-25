@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
+/* Font used in the project videos */
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+/* COLORS
+white
+color: #444;
+rgba(255, 255, 255, 0.35)
+rgba(255, 255, 255, 0.6)
+rgba(0, 0, 0, 0.25)
+ rgba(0, 0, 0, 0.1)
+#753682
+#bf2e34
+#c7365f;
+#2f2f2f
+*/
+
+* {
+  margin: 0; /*reset padding and margin for clarity*/
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%; /*reset to be able to use rem easily*/
+  box-sizing: border-box; /*box size based on what I fix once*/
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 400;
+  color: #333;
+  height: 100vh;
+  background-image: linear-gradient(
+    to top left,
+    #753682 0%,
+    #bf2e34 100%
+  ); /*to where, color gradient begin/end, x2*/
+  display: flex; /*body as a flexbox container*/
+  align-items: center;
+  justify-content: center;
+}
+
+/*LAYOUT --> Big Box and Sections*/
+main {
+  position: relative;
+  width: 100rem; /*not in % because I dont want it to always change with screen*/
+  height: 60rem;
+
+  background-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0rem 3rem 5rem rgba(0, 0, 0, 0.25); /*horizontal vertical blur color*/
+  filter: blur(); /*blury effect on the main element*/
+  backdrop-filter: blur(20rem); /*blury effect behind the main element*/
+
+  border-radius: 1.5rem;
+  display: flex; /*create a flexbox to move the child elements easily*/
+  overflow: hidden; /*hide overflow (content cliping), no scrolbards*/
+}
+
+.player {
+  flex: 50%; /* for the element to occupy 50% of the space*/
+  padding: 9rem;
+  display: flex;
+  flex-direction: column;
+  width: 50rem;
+  align-items: center;
+  transition: all 0.75s;
+}
+
+/*ELEMENTS*/
+.name {
+  text-transform: uppercase;
+  font-family: inherit;
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+  font-weight: 300;
+  word-spacing: 2px;
+}
+
+.score {
+  font-size: 8rem;
+  color: #c7365f;
+  font-weight: 150;
+  margin-bottom: auto; /*bring the element to the top possible position (based on other elements)*/
+}
+
+.player--active {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.player--active .name {
+  font-weight: 600;
+}
+.player--active .score {
+  font-weight: 400;
+}
+.player--active .current {
+  opacity: 1; /*set the box color to be at 100% of its opacity (normal color) if player is active*/
+}
+
+.current {
+  background-color: #c7365f;
+  opacity: 0.8; /*change the opacity to make more transparent*/
+  padding: 2rem;
+  border-radius: 1.2rem;
+  width: 65%;
+  color: #fff;
+  text-align: center; /*enter the text inside*/
+  transition: all 0.75s;
+}
+
+.current-label {
+  font-size: 1.7rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  color: #ddd;
+}
+
+.current-score {
+  font-size: 3.5rem;
+}
+
+/*ABSOLUTE POSITIONNED ELEMENTS*/
+
+.btn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(
+    -50%
+  ); /*element should be moved horizontally by half (50%) of its own width to the left.*/
+
+  border: none;
+  background: none; /*reset the background properties to none*/
+
+  background-color: white;
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+
+  font-family: inherit;
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-transform: uppercase; /*capitalize is only the first letter uppercase*/
+  color: #444;
+  transition: all 0.2s;
+  cursor: pointer;
+
+  padding: 1rem 3rem; /*horizontal vertical*/
+  border-radius: 50rem;
+  box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.1);
+}
+
+.btn::first-letter {
+  font-size: 2.5rem;
+  display: inline-block;
+  margin-right: 0.7rem;
+}
+
+.btn--new {
+  top: 4rem;
+}
+
+.btn--roll {
+  top: 40rem;
+}
+
+.btn--hold {
+  top: 47rem;
+}
+
+.btn:active {
+  transform: translate(-50%, 3px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+}
+
+.btn:focus {
+  outline: none; /*remove the browser outline when focus on the element*/
+}
+
+.dice {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  height: 10rem;
+  transform: translateX(-50%);
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
+}
+
+.hidden {
+  display: none; /*hidden class to hide an element or show a element */
+}
+
+.player--winner {
+  background-color: #2f2f2f;
+}
+
+.player--winner .name {
+  font-weight: 700;
+  font-size:6rem;
+  /*color: #c7365f;*/
+  color: white;
+}
